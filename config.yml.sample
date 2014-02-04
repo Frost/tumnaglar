@@ -1,0 +1,10 @@
+development:
+  image_url_path: http://some.url.tld/path/to/images
+  dragonfly:
+    cache_response_header: public, max-age=3600
+    datastore_path: images
+  cache:
+    verbose: true
+    metastore: tmp/cache/rack/meta
+    entitystore: tmp/cache/rack/entity
+
