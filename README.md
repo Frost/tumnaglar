@@ -22,3 +22,8 @@ Create a `config.yml` similar to the content of `config.yml.sample`:
 
 Run like any rack application, i.e. `bundle exec rerun rackup` in development.
 
+## Routes
+
+* `/:filename` - Get the file from the remote server and cache it locally
+* `/:filename/:size` - Get the file and resize it using ImageMagick
+
