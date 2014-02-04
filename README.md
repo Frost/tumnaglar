@@ -5,6 +5,7 @@ This is a tiny Sinatra app that is used to create thumbnails in custom sizes.
 ## Requirements
 
 * Ruby >2.0
+* ImageMagick
 
 ## Installation
 
