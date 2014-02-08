@@ -27,7 +27,14 @@ get "/:username" do |username|
 end
 
 get "/:username/:size" do |username, size|
-  halt tumnaglar.get_image(username).thumb(size).to_response(env)
+  begin
+    halt tumnaglar.get_image(username).thumb(size).to_response(env)
+  rescue ArgumentError => e
+    puts e.message
+    puts e.backtrace
+    status 400
+    halt
+  end
 end
 
 run Sinatra::Application.run!
