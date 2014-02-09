@@ -1,4 +1,5 @@
 require 'dragonfly'
+require 'unicorn'
 require 'sinatra'
 require 'rack/cache'
 require 'yaml'
@@ -37,5 +38,5 @@ get "/:username/:size" do |username, size|
   end
 end
 
-run Sinatra::Application.run!
+run Sinatra::Application
 
