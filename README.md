@@ -28,3 +28,4 @@ Run like any rack application, i.e. `bundle exec rerun rackup` in development.
 * `/:filename` - Get the file from the remote server and cache it locally
 * `/:filename/:size` - Get the file and resize it using ImageMagick
 
+Erroneous requests (e.g. something with a bad geometry string as :size parameter) will result in 400 Bad Request.
