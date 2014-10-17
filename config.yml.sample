@@ -7,4 +7,5 @@ development:
     verbose: true
     metastore: tmp/cache/rack/meta
     entitystore: tmp/cache/rack/entity
-
+  storage:
+    max_age: 3600

@@ -2,6 +2,7 @@ class Tumnaglar
   def initialize(config)
     @image_url_path = config["image_url_path"]
     @root_path = config.dragonfly["datastore_path"]
+    @max_age = config.storage["max_age"]
     @format = 'png'
   end
 
@@ -14,6 +15,7 @@ class Tumnaglar
         encode(@format).
         to_file(local_path(filename))
     end
+    puts image.file
     return image
   end
 
@@ -22,7 +24,12 @@ class Tumnaglar
  def read_file(filename)
    image = Dragonfly.app.fetch_file(local_path(filename))
    image.data
-   return image
+   if stale(image)
+     puts "stale cache: #{filename}"
+     return nil
+   else
+     return image
+   end
  rescue => e
    puts e.backtrace
    return nil
@@ -38,6 +45,11 @@ class Tumnaglar
 
   def filename(filename)
     "#{filename}.#{@format}"
+  end
+
+  def stale(image)
+    ctime = File.ctime(image.path)
+    ctime < Time.new - @max_age
   end
 end
 
